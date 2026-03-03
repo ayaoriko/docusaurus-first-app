@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Docusaurus First App',
+  tagline: 'Dinosaurs って便利だね。',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -30,9 +30,10 @@ const config: Config = {
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
+  // ここを ja にすることで、HTMLのlang属性が ja になる。
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'ja',
+    locales: ['ja'],
   },
 
   presets: [
@@ -40,6 +41,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+          routeBasePath: 'docs', // outeBasePathを変更することでURLの単語が変わる。（フォルダは変更不可）
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -68,14 +70,29 @@ const config: Config = {
     ],
   ],
 
+  // Tutorial、Blog以外のドキュメントを追加するためにプラグインを使う。今回はLearnというドキュメントを追加する。
+  //plugins: [
+  //  [
+  //    '@docusaurus/plugin-content-docs',
+  //    {
+  //      id: 'learn',
+  //      path: 'learn',
+  //      routeBasePath: 'learn',
+  //      sidebarPath: false,// falseにするとサイドバーが表示されなくなる。変更するときは要再読み込み
+  //    },
+  //  ],
+  //],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
-      respectPrefersColorScheme: true,
+      defaultMode: 'light', // デフォルトのテーマモードを設定する。light、dark、autoのいずれかを指定できる。autoにすると、ユーザーのOSのテーマ設定に従う。
+      disableSwitch: true, // ユーザーがテーマを切り替えることができるようにする。trueにすると、ユーザーはテーマを切り替えることができなくなる。
+      respectPrefersColorScheme: true, // ユーザーのOSのテーマ設定を尊重する。trueにすると、ユーザーがダークモードを選択している場合、サイトも自動的にダークモードになる。falseにすると、サイトは常にライトモードになる。
     },
     navbar: {
-      title: 'My Site',
+      title: 'Docusaurus First App',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -85,13 +102,17 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'サンプル1：Tutorial',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
+        { to: '/blog', label: 'サンプル2：Blog', position: 'left' },
+        //{ to: '/learn', label: 'Learn', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/ayaoriko/docusaurus-first-app', // hrefにすることで、外部リンクになる。アイコンも自動でつく
           label: 'GitHub',
           position: 'right',
+        },
+        {
+          type: 'docsVersionDropdown',
         },
       ],
     },
@@ -99,28 +120,32 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'サンプル',
           items: [
             {
-              label: 'Tutorial',
+              label: 'サンプル1：Tutorial',
               to: '/docs/intro',
             },
+            {
+              label: 'サンプル2：Blog',
+              to: '/blog',
+            },
+            //{
+            //  label: 'Learn',
+            //  to: '/learn',
+            //},
           ],
         },
         {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'Blog',
+              href: 'https://ayaoriko.com',
             },
             {
               label: 'X',
-              href: 'https://x.com/docusaurus',
+              href: 'https://x.com/ayaoriko',
             },
           ],
         },
@@ -133,12 +158,12 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/ayaoriko/docusaurus-first-app',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} ayaoriko, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
