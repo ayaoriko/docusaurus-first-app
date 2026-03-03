@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkdocusaurus_first_app=globalThis.webpackChunkdocusaurus_first_app||[]).push([[1903],{1912(s){s.exports=JSON.parse('{"blogBasePath":"/docusaurus-first-app/blog","blogTitle":"Blog","authorsListPath":"/docusaurus-first-app/blog/authors"}')}}]);

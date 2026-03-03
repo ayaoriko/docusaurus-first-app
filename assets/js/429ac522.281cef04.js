@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkdocusaurus_first_app=globalThis.webpackChunkdocusaurus_first_app||[]).push([[3383],{1432(a){a.exports=JSON.parse('{"metadata":{"permalink":"/docusaurus-first-app/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":5,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
